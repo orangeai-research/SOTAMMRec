@@ -1,0 +1,26 @@
+embedding_size: 64
+feat_embed_dim: 64
+n_layers: 2
+
+aggr_mode: 'add'
+knn_k: 10 # [10]
+n_mm_layers: 1
+u_layers: 1
+learning_rate: 0.0001 # [ 0.0001, 0.1, 0.01, 0.001]
+reg_weight: 0.001 # [ 0.1, 0.01, 0.001, 0.0001 ]
+degree_n: 3 # [3]
+num_of_session_k: 10 #[10]
+
+gamma: 0.3
+tau: 0.7
+
+alpha_image: 0.1
+alpha_text_p: 0.7
+
+alpha_text_z: 0.1
+alpha_interest: 0.1
+k: 30
+# hyper_parameters: [ "knn_k", "degree_n","num_of_session_k" ]
+
+# hyper_parameters: [ "knn_k","learning_rate", "reg_weight", "gamma","tau","degree_n","num_of_session_k" ]
+
