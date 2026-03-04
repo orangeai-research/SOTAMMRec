@@ -1,0 +1,1034 @@
+Wed 04 Mar 2026 18:00:11 INFO ██Server: 	tl102
+Wed 04 Mar 2026 18:00:11 INFO ██Dir: 	/media/data1/hy/OrangeMML/TAMER
+
+Wed 04 Mar 2026 18:00:11 INFO 
+gpu_id=0
+use_gpu=True
+seed=[999]
+data_path=./data/
+inter_splitting_label=x_label
+filter_out_cod_start_users=True
+is_multimodal_model=True
+checkpoint_dir=saved
+save_recommended_topk=True
+recommend_topk=recommend_topk/
+embedding_size=64
+epochs=1000
+stopping_step=20
+train_batch_size=2048
+learner=adam
+learning_rate=0.0001
+learning_rate_scheduler=[1.0, 50]
+eval_step=1
+training_neg_sample_num=1
+use_neg_sampling=True
+use_full_sampling=False
+NEG_PREFIX=neg__
+USER_ID_FIELD=userID
+ITEM_ID_FIELD=itemID
+TIME_FIELD=timestamp
+field_separator=	
+metrics=['Recall', 'NDCG']
+topk=[10, 20]
+valid_metric=Recall@20
+eval_batch_size=4096
+use_raw_features=False
+max_txt_len=32
+max_img_size=256
+vocab_size=30522
+type_vocab_size=2
+hidden_size=4
+pad_token_id=0
+max_position_embeddings=512
+layer_norm_eps=1e-12
+hidden_dropout_prob=0.1
+end2end=False
+hyper_parameters=['seed']
+load_meta_cols=['itemID', 'description', 'title', 'category']
+TEXT_ID_FIELD=description
+inter_file_name=baby.inter
+text_file_name=meta-games-indexed.csv
+vision_feature_file=image_feat.npy
+text_feature_z_file=text_feat_z.npy
+text_feature_p_file=text_feat_p.npy
+item_graph_dict_file=item_graph_dict.npy
+gamma=[0.3]
+tau=[0.7]
+alpha_text_p=0.7
+alpha_interest=0.1
+alpha_text_z=0.1
+alpha_image=0.1
+feat_embed_dim=64
+n_layers=2
+aggr_mode=add
+knn_k=10
+n_mm_layers=1
+u_layers=1
+reg_weight=0.001
+degree_n=3
+num_of_session_k=10
+model=TAMER
+dataset=Baby
+valid_metric_bigger=True
+device=cuda
+
+
+Wed 04 Mar 2026 18:00:11 INFO Baby
+The number of users: 19445
+Average actions of users: 8.269066598097197
+The number of items: 7050
+Average actions of items: 22.807375886524824
+The number of inters: 160792
+The sparsity of the dataset: 99.8827082752043%
+Wed 04 Mar 2026 18:00:11 INFO 
+====Training====
+Baby
+The number of users: 19445
+Average actions of users: 6.096734379017742
+The number of items: 7047
+Average actions of items: 16.82290336313325
+The number of inters: 118551
+The sparsity of the dataset: 99.9134846831415%
+Wed 04 Mar 2026 18:00:11 INFO 
+====Validation====
+Baby
+The number of users: 19445
+Average actions of users: 1.0572897917202366
+The number of items: 5483
+Average actions of items: 3.749589640707642
+The number of inters: 20559
+The sparsity of the dataset: 99.98071694707788%
+Wed 04 Mar 2026 18:00:11 INFO 
+====Testing====
+Baby
+The number of users: 19445
+Average actions of users: 1.1150424273592183
+The number of items: 5549
+Average actions of items: 3.907370697422959
+The number of inters: 21682
+The sparsity of the dataset: 99.97990552482683%
+Wed 04 Mar 2026 18:00:21 INFO 
+
+=================================
+
+
+Wed 04 Mar 2026 18:00:21 INFO =========1/1: Parameters:['seed']=(999,)=======
+Wed 04 Mar 2026 18:00:26 INFO TAMER(
+  (MLP_v): Linear(in_features=64, out_features=64, bias=False)
+  (MLP_t): Linear(in_features=64, out_features=64, bias=False)
+  (image_embedding): Embedding(7050, 4096)
+  (v_gcn): GCN(
+    (MLP): Linear(in_features=4096, out_features=256, bias=True)
+    (MLP_1): Linear(in_features=256, out_features=64, bias=True)
+    (conv_embed_1): Base_gcn(64, 64)
+    (ID_embedding): Embedding(7050, 64)
+  )
+)
+Trainable parameters: 31704290
+Wed 04 Mar 2026 18:00:28 INFO epoch 0 training [time: 1.37s, train loss: 49.9420]
+Wed 04 Mar 2026 18:00:31 INFO epoch 0 evaluating [time: 1.74s, valid_score: 0.008100]
+Wed 04 Mar 2026 18:00:31 INFO valid result: 
+recall@10: 0.0049    recall@20: 0.0081    ndcg@10: 0.0026    ndcg@20: 0.0034    
+Wed 04 Mar 2026 18:00:31 INFO test result: 
+recall@10: 0.0045    recall@20: 0.0075    ndcg@10: 0.0023    ndcg@20: 0.0031    
+Wed 04 Mar 2026 18:00:31 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:32 INFO epoch 1 training [time: 1.05s, train loss: 43.9717]
+Wed 04 Mar 2026 18:00:36 INFO epoch 1 evaluating [time: 2.11s, valid_score: 0.035200]
+Wed 04 Mar 2026 18:00:36 INFO valid result: 
+recall@10: 0.0235    recall@20: 0.0352    ndcg@10: 0.0126    ndcg@20: 0.0156    
+Wed 04 Mar 2026 18:00:36 INFO test result: 
+recall@10: 0.0243    recall@20: 0.0382    ndcg@10: 0.0134    ndcg@20: 0.0170    
+Wed 04 Mar 2026 18:00:36 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:37 INFO epoch 2 training [time: 1.06s, train loss: 34.6769]
+Wed 04 Mar 2026 18:00:41 INFO epoch 2 evaluating [time: 1.82s, valid_score: 0.056800]
+Wed 04 Mar 2026 18:00:41 INFO valid result: 
+recall@10: 0.0352    recall@20: 0.0568    ndcg@10: 0.0193    ndcg@20: 0.0248    
+Wed 04 Mar 2026 18:00:41 INFO test result: 
+recall@10: 0.0378    recall@20: 0.0561    ndcg@10: 0.0202    ndcg@20: 0.0249    
+Wed 04 Mar 2026 18:00:41 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:42 INFO epoch 3 training [time: 1.18s, train loss: 27.6980]
+Wed 04 Mar 2026 18:00:46 INFO epoch 3 evaluating [time: 1.82s, valid_score: 0.061000]
+Wed 04 Mar 2026 18:00:46 INFO valid result: 
+recall@10: 0.0394    recall@20: 0.0610    ndcg@10: 0.0212    ndcg@20: 0.0267    
+Wed 04 Mar 2026 18:00:46 INFO test result: 
+recall@10: 0.0396    recall@20: 0.0612    ndcg@10: 0.0215    ndcg@20: 0.0271    
+Wed 04 Mar 2026 18:00:46 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:47 INFO epoch 4 training [time: 1.00s, train loss: 23.9875]
+Wed 04 Mar 2026 18:00:50 INFO epoch 4 evaluating [time: 1.66s, valid_score: 0.062500]
+Wed 04 Mar 2026 18:00:50 INFO valid result: 
+recall@10: 0.0408    recall@20: 0.0625    ndcg@10: 0.0218    ndcg@20: 0.0273    
+Wed 04 Mar 2026 18:00:50 INFO test result: 
+recall@10: 0.0408    recall@20: 0.0629    ndcg@10: 0.0221    ndcg@20: 0.0278    
+Wed 04 Mar 2026 18:00:50 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:52 INFO epoch 5 training [time: 1.21s, train loss: 21.6951]
+Wed 04 Mar 2026 18:00:55 INFO epoch 5 evaluating [time: 1.74s, valid_score: 0.063500]
+Wed 04 Mar 2026 18:00:55 INFO valid result: 
+recall@10: 0.0414    recall@20: 0.0635    ndcg@10: 0.0222    ndcg@20: 0.0278    
+Wed 04 Mar 2026 18:00:55 INFO test result: 
+recall@10: 0.0413    recall@20: 0.0629    ndcg@10: 0.0224    ndcg@20: 0.0280    
+Wed 04 Mar 2026 18:00:55 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:00:56 INFO epoch 6 training [time: 1.08s, train loss: 19.6907]
+Wed 04 Mar 2026 18:01:00 INFO epoch 6 evaluating [time: 1.82s, valid_score: 0.064400]
+Wed 04 Mar 2026 18:01:00 INFO valid result: 
+recall@10: 0.0419    recall@20: 0.0644    ndcg@10: 0.0227    ndcg@20: 0.0284    
+Wed 04 Mar 2026 18:01:00 INFO test result: 
+recall@10: 0.0411    recall@20: 0.0656    ndcg@10: 0.0224    ndcg@20: 0.0287    
+Wed 04 Mar 2026 18:01:00 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:01 INFO epoch 7 training [time: 1.25s, train loss: 18.3061]
+Wed 04 Mar 2026 18:01:04 INFO epoch 7 evaluating [time: 1.45s, valid_score: 0.065300]
+Wed 04 Mar 2026 18:01:04 INFO valid result: 
+recall@10: 0.0429    recall@20: 0.0653    ndcg@10: 0.0234    ndcg@20: 0.0291    
+Wed 04 Mar 2026 18:01:04 INFO test result: 
+recall@10: 0.0425    recall@20: 0.0667    ndcg@10: 0.0230    ndcg@20: 0.0293    
+Wed 04 Mar 2026 18:01:04 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:05 INFO epoch 8 training [time: 1.09s, train loss: 16.8382]
+Wed 04 Mar 2026 18:01:09 INFO epoch 8 evaluating [time: 1.82s, valid_score: 0.067500]
+Wed 04 Mar 2026 18:01:09 INFO valid result: 
+recall@10: 0.0439    recall@20: 0.0675    ndcg@10: 0.0236    ndcg@20: 0.0297    
+Wed 04 Mar 2026 18:01:09 INFO test result: 
+recall@10: 0.0431    recall@20: 0.0681    ndcg@10: 0.0231    ndcg@20: 0.0296    
+Wed 04 Mar 2026 18:01:09 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:10 INFO epoch 9 training [time: 1.12s, train loss: 15.6590]
+Wed 04 Mar 2026 18:01:14 INFO epoch 9 evaluating [time: 1.88s, valid_score: 0.068600]
+Wed 04 Mar 2026 18:01:14 INFO valid result: 
+recall@10: 0.0442    recall@20: 0.0686    ndcg@10: 0.0238    ndcg@20: 0.0300    
+Wed 04 Mar 2026 18:01:14 INFO test result: 
+recall@10: 0.0442    recall@20: 0.0689    ndcg@10: 0.0237    ndcg@20: 0.0301    
+Wed 04 Mar 2026 18:01:14 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:15 INFO epoch 10 training [time: 1.08s, train loss: 14.7209]
+Wed 04 Mar 2026 18:01:18 INFO epoch 10 evaluating [time: 1.82s, valid_score: 0.068900]
+Wed 04 Mar 2026 18:01:18 INFO valid result: 
+recall@10: 0.0446    recall@20: 0.0689    ndcg@10: 0.0240    ndcg@20: 0.0302    
+Wed 04 Mar 2026 18:01:18 INFO test result: 
+recall@10: 0.0446    recall@20: 0.0701    ndcg@10: 0.0241    ndcg@20: 0.0306    
+Wed 04 Mar 2026 18:01:18 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:20 INFO epoch 11 training [time: 1.10s, train loss: 13.9037]
+Wed 04 Mar 2026 18:01:23 INFO epoch 11 evaluating [time: 1.89s, valid_score: 0.069800]
+Wed 04 Mar 2026 18:01:23 INFO valid result: 
+recall@10: 0.0459    recall@20: 0.0698    ndcg@10: 0.0246    ndcg@20: 0.0307    
+Wed 04 Mar 2026 18:01:23 INFO test result: 
+recall@10: 0.0448    recall@20: 0.0707    ndcg@10: 0.0241    ndcg@20: 0.0308    
+Wed 04 Mar 2026 18:01:23 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:24 INFO epoch 12 training [time: 1.08s, train loss: 13.1895]
+Wed 04 Mar 2026 18:01:28 INFO epoch 12 evaluating [time: 1.67s, valid_score: 0.071000]
+Wed 04 Mar 2026 18:01:28 INFO valid result: 
+recall@10: 0.0462    recall@20: 0.0710    ndcg@10: 0.0248    ndcg@20: 0.0311    
+Wed 04 Mar 2026 18:01:28 INFO test result: 
+recall@10: 0.0458    recall@20: 0.0711    ndcg@10: 0.0247    ndcg@20: 0.0313    
+Wed 04 Mar 2026 18:01:28 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:29 INFO epoch 13 training [time: 1.06s, train loss: 12.4839]
+Wed 04 Mar 2026 18:01:32 INFO epoch 13 evaluating [time: 1.90s, valid_score: 0.071900]
+Wed 04 Mar 2026 18:01:32 INFO valid result: 
+recall@10: 0.0460    recall@20: 0.0719    ndcg@10: 0.0248    ndcg@20: 0.0314    
+Wed 04 Mar 2026 18:01:32 INFO test result: 
+recall@10: 0.0460    recall@20: 0.0719    ndcg@10: 0.0249    ndcg@20: 0.0316    
+Wed 04 Mar 2026 18:01:32 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:34 INFO epoch 14 training [time: 1.03s, train loss: 11.8806]
+Wed 04 Mar 2026 18:01:37 INFO epoch 14 evaluating [time: 1.74s, valid_score: 0.072500]
+Wed 04 Mar 2026 18:01:37 INFO valid result: 
+recall@10: 0.0470    recall@20: 0.0725    ndcg@10: 0.0253    ndcg@20: 0.0318    
+Wed 04 Mar 2026 18:01:37 INFO test result: 
+recall@10: 0.0467    recall@20: 0.0719    ndcg@10: 0.0252    ndcg@20: 0.0317    
+Wed 04 Mar 2026 18:01:37 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:38 INFO epoch 15 training [time: 1.07s, train loss: 11.3386]
+Wed 04 Mar 2026 18:01:42 INFO epoch 15 evaluating [time: 1.91s, valid_score: 0.073700]
+Wed 04 Mar 2026 18:01:42 INFO valid result: 
+recall@10: 0.0472    recall@20: 0.0737    ndcg@10: 0.0255    ndcg@20: 0.0322    
+Wed 04 Mar 2026 18:01:42 INFO test result: 
+recall@10: 0.0469    recall@20: 0.0741    ndcg@10: 0.0255    ndcg@20: 0.0325    
+Wed 04 Mar 2026 18:01:42 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:43 INFO epoch 16 training [time: 1.05s, train loss: 10.9472]
+Wed 04 Mar 2026 18:01:47 INFO epoch 16 evaluating [time: 1.60s, valid_score: 0.074600]
+Wed 04 Mar 2026 18:01:47 INFO valid result: 
+recall@10: 0.0479    recall@20: 0.0746    ndcg@10: 0.0258    ndcg@20: 0.0325    
+Wed 04 Mar 2026 18:01:47 INFO test result: 
+recall@10: 0.0476    recall@20: 0.0747    ndcg@10: 0.0258    ndcg@20: 0.0328    
+Wed 04 Mar 2026 18:01:47 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:48 INFO epoch 17 training [time: 1.03s, train loss: 10.4996]
+Wed 04 Mar 2026 18:01:51 INFO epoch 17 evaluating [time: 1.90s, valid_score: 0.074500]
+Wed 04 Mar 2026 18:01:51 INFO valid result: 
+recall@10: 0.0479    recall@20: 0.0745    ndcg@10: 0.0260    ndcg@20: 0.0328    
+Wed 04 Mar 2026 18:01:51 INFO test result: 
+recall@10: 0.0475    recall@20: 0.0747    ndcg@10: 0.0258    ndcg@20: 0.0328    
+Wed 04 Mar 2026 18:01:52 INFO epoch 18 training [time: 0.95s, train loss: 10.1147]
+Wed 04 Mar 2026 18:01:56 INFO epoch 18 evaluating [time: 1.65s, valid_score: 0.076000]
+Wed 04 Mar 2026 18:01:56 INFO valid result: 
+recall@10: 0.0487    recall@20: 0.0760    ndcg@10: 0.0261    ndcg@20: 0.0330    
+Wed 04 Mar 2026 18:01:56 INFO test result: 
+recall@10: 0.0473    recall@20: 0.0751    ndcg@10: 0.0259    ndcg@20: 0.0331    
+Wed 04 Mar 2026 18:01:56 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:01:57 INFO epoch 19 training [time: 1.09s, train loss: 9.8192]
+Wed 04 Mar 2026 18:02:00 INFO epoch 19 evaluating [time: 2.07s, valid_score: 0.076700]
+Wed 04 Mar 2026 18:02:00 INFO valid result: 
+recall@10: 0.0493    recall@20: 0.0767    ndcg@10: 0.0265    ndcg@20: 0.0334    
+Wed 04 Mar 2026 18:02:00 INFO test result: 
+recall@10: 0.0487    recall@20: 0.0752    ndcg@10: 0.0263    ndcg@20: 0.0332    
+Wed 04 Mar 2026 18:02:00 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:01 INFO epoch 20 training [time: 0.91s, train loss: 9.5616]
+Wed 04 Mar 2026 18:02:04 INFO epoch 20 evaluating [time: 1.69s, valid_score: 0.076800]
+Wed 04 Mar 2026 18:02:04 INFO valid result: 
+recall@10: 0.0500    recall@20: 0.0768    ndcg@10: 0.0269    ndcg@20: 0.0337    
+Wed 04 Mar 2026 18:02:04 INFO test result: 
+recall@10: 0.0482    recall@20: 0.0759    ndcg@10: 0.0262    ndcg@20: 0.0333    
+Wed 04 Mar 2026 18:02:04 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:06 INFO epoch 21 training [time: 1.24s, train loss: 9.2757]
+Wed 04 Mar 2026 18:02:10 INFO epoch 21 evaluating [time: 1.82s, valid_score: 0.077800]
+Wed 04 Mar 2026 18:02:10 INFO valid result: 
+recall@10: 0.0501    recall@20: 0.0778    ndcg@10: 0.0269    ndcg@20: 0.0340    
+Wed 04 Mar 2026 18:02:10 INFO test result: 
+recall@10: 0.0484    recall@20: 0.0777    ndcg@10: 0.0264    ndcg@20: 0.0340    
+Wed 04 Mar 2026 18:02:10 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:11 INFO epoch 22 training [time: 1.07s, train loss: 9.0361]
+Wed 04 Mar 2026 18:02:16 INFO epoch 22 evaluating [time: 2.43s, valid_score: 0.078200]
+Wed 04 Mar 2026 18:02:16 INFO valid result: 
+recall@10: 0.0510    recall@20: 0.0782    ndcg@10: 0.0272    ndcg@20: 0.0342    
+Wed 04 Mar 2026 18:02:16 INFO test result: 
+recall@10: 0.0488    recall@20: 0.0777    ndcg@10: 0.0268    ndcg@20: 0.0342    
+Wed 04 Mar 2026 18:02:16 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:17 INFO epoch 23 training [time: 1.05s, train loss: 8.7225]
+Wed 04 Mar 2026 18:02:21 INFO epoch 23 evaluating [time: 1.87s, valid_score: 0.079000]
+Wed 04 Mar 2026 18:02:21 INFO valid result: 
+recall@10: 0.0510    recall@20: 0.0790    ndcg@10: 0.0272    ndcg@20: 0.0343    
+Wed 04 Mar 2026 18:02:21 INFO test result: 
+recall@10: 0.0499    recall@20: 0.0775    ndcg@10: 0.0271    ndcg@20: 0.0342    
+Wed 04 Mar 2026 18:02:21 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:22 INFO epoch 24 training [time: 1.10s, train loss: 8.6244]
+Wed 04 Mar 2026 18:02:26 INFO epoch 24 evaluating [time: 1.95s, valid_score: 0.079400]
+Wed 04 Mar 2026 18:02:26 INFO valid result: 
+recall@10: 0.0513    recall@20: 0.0794    ndcg@10: 0.0275    ndcg@20: 0.0346    
+Wed 04 Mar 2026 18:02:26 INFO test result: 
+recall@10: 0.0494    recall@20: 0.0784    ndcg@10: 0.0270    ndcg@20: 0.0345    
+Wed 04 Mar 2026 18:02:26 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:27 INFO epoch 25 training [time: 1.06s, train loss: 8.3871]
+Wed 04 Mar 2026 18:02:32 INFO epoch 25 evaluating [time: 2.43s, valid_score: 0.079400]
+Wed 04 Mar 2026 18:02:32 INFO valid result: 
+recall@10: 0.0513    recall@20: 0.0794    ndcg@10: 0.0275    ndcg@20: 0.0346    
+Wed 04 Mar 2026 18:02:32 INFO test result: 
+recall@10: 0.0500    recall@20: 0.0789    ndcg@10: 0.0271    ndcg@20: 0.0346    
+Wed 04 Mar 2026 18:02:33 INFO epoch 26 training [time: 1.14s, train loss: 8.3462]
+Wed 04 Mar 2026 18:02:37 INFO epoch 26 evaluating [time: 2.15s, valid_score: 0.079300]
+Wed 04 Mar 2026 18:02:37 INFO valid result: 
+recall@10: 0.0511    recall@20: 0.0793    ndcg@10: 0.0274    ndcg@20: 0.0346    
+Wed 04 Mar 2026 18:02:37 INFO test result: 
+recall@10: 0.0503    recall@20: 0.0790    ndcg@10: 0.0272    ndcg@20: 0.0346    
+Wed 04 Mar 2026 18:02:38 INFO epoch 27 training [time: 1.14s, train loss: 8.1582]
+Wed 04 Mar 2026 18:02:43 INFO epoch 27 evaluating [time: 1.98s, valid_score: 0.080100]
+Wed 04 Mar 2026 18:02:43 INFO valid result: 
+recall@10: 0.0514    recall@20: 0.0801    ndcg@10: 0.0276    ndcg@20: 0.0349    
+Wed 04 Mar 2026 18:02:43 INFO test result: 
+recall@10: 0.0518    recall@20: 0.0783    ndcg@10: 0.0279    ndcg@20: 0.0347    
+Wed 04 Mar 2026 18:02:43 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:44 INFO epoch 28 training [time: 1.08s, train loss: 8.0408]
+Wed 04 Mar 2026 18:02:48 INFO epoch 28 evaluating [time: 1.85s, valid_score: 0.080800]
+Wed 04 Mar 2026 18:02:48 INFO valid result: 
+recall@10: 0.0517    recall@20: 0.0808    ndcg@10: 0.0278    ndcg@20: 0.0351    
+Wed 04 Mar 2026 18:02:48 INFO test result: 
+recall@10: 0.0509    recall@20: 0.0799    ndcg@10: 0.0275    ndcg@20: 0.0350    
+Wed 04 Mar 2026 18:02:48 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:02:49 INFO epoch 29 training [time: 1.08s, train loss: 7.8546]
+Wed 04 Mar 2026 18:02:52 INFO epoch 29 evaluating [time: 1.91s, valid_score: 0.080500]
+Wed 04 Mar 2026 18:02:52 INFO valid result: 
+recall@10: 0.0518    recall@20: 0.0805    ndcg@10: 0.0278    ndcg@20: 0.0351    
+Wed 04 Mar 2026 18:02:52 INFO test result: 
+recall@10: 0.0508    recall@20: 0.0802    ndcg@10: 0.0275    ndcg@20: 0.0351    
+Wed 04 Mar 2026 18:02:53 INFO epoch 30 training [time: 1.07s, train loss: 7.7452]
+Wed 04 Mar 2026 18:02:57 INFO epoch 30 evaluating [time: 1.97s, valid_score: 0.080500]
+Wed 04 Mar 2026 18:02:57 INFO valid result: 
+recall@10: 0.0522    recall@20: 0.0805    ndcg@10: 0.0280    ndcg@20: 0.0352    
+Wed 04 Mar 2026 18:02:57 INFO test result: 
+recall@10: 0.0510    recall@20: 0.0806    ndcg@10: 0.0278    ndcg@20: 0.0354    
+Wed 04 Mar 2026 18:02:58 INFO epoch 31 training [time: 1.07s, train loss: 7.6386]
+Wed 04 Mar 2026 18:03:01 INFO epoch 31 evaluating [time: 1.65s, valid_score: 0.080900]
+Wed 04 Mar 2026 18:03:01 INFO valid result: 
+recall@10: 0.0518    recall@20: 0.0809    ndcg@10: 0.0279    ndcg@20: 0.0353    
+Wed 04 Mar 2026 18:03:01 INFO test result: 
+recall@10: 0.0514    recall@20: 0.0807    ndcg@10: 0.0280    ndcg@20: 0.0355    
+Wed 04 Mar 2026 18:03:01 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:02 INFO epoch 32 training [time: 1.05s, train loss: 7.5320]
+Wed 04 Mar 2026 18:03:06 INFO epoch 32 evaluating [time: 1.92s, valid_score: 0.081100]
+Wed 04 Mar 2026 18:03:06 INFO valid result: 
+recall@10: 0.0520    recall@20: 0.0811    ndcg@10: 0.0281    ndcg@20: 0.0355    
+Wed 04 Mar 2026 18:03:06 INFO test result: 
+recall@10: 0.0519    recall@20: 0.0817    ndcg@10: 0.0281    ndcg@20: 0.0358    
+Wed 04 Mar 2026 18:03:06 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:07 INFO epoch 33 training [time: 1.03s, train loss: 7.4110]
+Wed 04 Mar 2026 18:03:11 INFO epoch 33 evaluating [time: 1.78s, valid_score: 0.081600]
+Wed 04 Mar 2026 18:03:11 INFO valid result: 
+recall@10: 0.0520    recall@20: 0.0816    ndcg@10: 0.0281    ndcg@20: 0.0356    
+Wed 04 Mar 2026 18:03:11 INFO test result: 
+recall@10: 0.0518    recall@20: 0.0819    ndcg@10: 0.0281    ndcg@20: 0.0358    
+Wed 04 Mar 2026 18:03:11 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:12 INFO epoch 34 training [time: 1.05s, train loss: 7.3724]
+Wed 04 Mar 2026 18:03:15 INFO epoch 34 evaluating [time: 1.80s, valid_score: 0.082200]
+Wed 04 Mar 2026 18:03:15 INFO valid result: 
+recall@10: 0.0519    recall@20: 0.0822    ndcg@10: 0.0280    ndcg@20: 0.0356    
+Wed 04 Mar 2026 18:03:15 INFO test result: 
+recall@10: 0.0519    recall@20: 0.0820    ndcg@10: 0.0281    ndcg@20: 0.0359    
+Wed 04 Mar 2026 18:03:15 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:16 INFO epoch 35 training [time: 1.07s, train loss: 7.2574]
+Wed 04 Mar 2026 18:03:20 INFO epoch 35 evaluating [time: 1.93s, valid_score: 0.082500]
+Wed 04 Mar 2026 18:03:20 INFO valid result: 
+recall@10: 0.0527    recall@20: 0.0825    ndcg@10: 0.0282    ndcg@20: 0.0358    
+Wed 04 Mar 2026 18:03:20 INFO test result: 
+recall@10: 0.0524    recall@20: 0.0818    ndcg@10: 0.0284    ndcg@20: 0.0359    
+Wed 04 Mar 2026 18:03:20 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:21 INFO epoch 36 training [time: 1.07s, train loss: 7.2319]
+Wed 04 Mar 2026 18:03:25 INFO epoch 36 evaluating [time: 1.89s, valid_score: 0.081700]
+Wed 04 Mar 2026 18:03:25 INFO valid result: 
+recall@10: 0.0541    recall@20: 0.0817    ndcg@10: 0.0288    ndcg@20: 0.0358    
+Wed 04 Mar 2026 18:03:25 INFO test result: 
+recall@10: 0.0523    recall@20: 0.0826    ndcg@10: 0.0284    ndcg@20: 0.0362    
+Wed 04 Mar 2026 18:03:26 INFO epoch 37 training [time: 1.06s, train loss: 7.1465]
+Wed 04 Mar 2026 18:03:30 INFO epoch 37 evaluating [time: 1.89s, valid_score: 0.082300]
+Wed 04 Mar 2026 18:03:30 INFO valid result: 
+recall@10: 0.0534    recall@20: 0.0823    ndcg@10: 0.0287    ndcg@20: 0.0361    
+Wed 04 Mar 2026 18:03:30 INFO test result: 
+recall@10: 0.0530    recall@20: 0.0827    ndcg@10: 0.0284    ndcg@20: 0.0360    
+Wed 04 Mar 2026 18:03:31 INFO epoch 38 training [time: 1.06s, train loss: 7.0832]
+Wed 04 Mar 2026 18:03:36 INFO epoch 38 evaluating [time: 2.54s, valid_score: 0.082500]
+Wed 04 Mar 2026 18:03:36 INFO valid result: 
+recall@10: 0.0537    recall@20: 0.0825    ndcg@10: 0.0289    ndcg@20: 0.0362    
+Wed 04 Mar 2026 18:03:36 INFO test result: 
+recall@10: 0.0524    recall@20: 0.0820    ndcg@10: 0.0284    ndcg@20: 0.0361    
+Wed 04 Mar 2026 18:03:37 INFO epoch 39 training [time: 1.02s, train loss: 6.9521]
+Wed 04 Mar 2026 18:03:40 INFO epoch 39 evaluating [time: 1.58s, valid_score: 0.082900]
+Wed 04 Mar 2026 18:03:40 INFO valid result: 
+recall@10: 0.0535    recall@20: 0.0829    ndcg@10: 0.0287    ndcg@20: 0.0362    
+Wed 04 Mar 2026 18:03:40 INFO test result: 
+recall@10: 0.0534    recall@20: 0.0828    ndcg@10: 0.0286    ndcg@20: 0.0361    
+Wed 04 Mar 2026 18:03:40 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:41 INFO epoch 40 training [time: 1.13s, train loss: 6.9323]
+Wed 04 Mar 2026 18:03:45 INFO epoch 40 evaluating [time: 1.56s, valid_score: 0.083200]
+Wed 04 Mar 2026 18:03:45 INFO valid result: 
+recall@10: 0.0539    recall@20: 0.0832    ndcg@10: 0.0287    ndcg@20: 0.0361    
+Wed 04 Mar 2026 18:03:45 INFO test result: 
+recall@10: 0.0541    recall@20: 0.0827    ndcg@10: 0.0288    ndcg@20: 0.0362    
+Wed 04 Mar 2026 18:03:45 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:46 INFO epoch 41 training [time: 1.06s, train loss: 6.8976]
+Wed 04 Mar 2026 18:03:49 INFO epoch 41 evaluating [time: 1.91s, valid_score: 0.083600]
+Wed 04 Mar 2026 18:03:49 INFO valid result: 
+recall@10: 0.0541    recall@20: 0.0836    ndcg@10: 0.0287    ndcg@20: 0.0362    
+Wed 04 Mar 2026 18:03:49 INFO test result: 
+recall@10: 0.0539    recall@20: 0.0836    ndcg@10: 0.0289    ndcg@20: 0.0365    
+Wed 04 Mar 2026 18:03:49 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:50 INFO epoch 42 training [time: 1.06s, train loss: 6.8016]
+Wed 04 Mar 2026 18:03:54 INFO epoch 42 evaluating [time: 1.84s, valid_score: 0.084300]
+Wed 04 Mar 2026 18:03:54 INFO valid result: 
+recall@10: 0.0542    recall@20: 0.0843    ndcg@10: 0.0289    ndcg@20: 0.0365    
+Wed 04 Mar 2026 18:03:54 INFO test result: 
+recall@10: 0.0539    recall@20: 0.0835    ndcg@10: 0.0290    ndcg@20: 0.0366    
+Wed 04 Mar 2026 18:03:54 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:03:55 INFO epoch 43 training [time: 1.03s, train loss: 6.7876]
+Wed 04 Mar 2026 18:03:59 INFO epoch 43 evaluating [time: 1.61s, valid_score: 0.084600]
+Wed 04 Mar 2026 18:03:59 INFO valid result: 
+recall@10: 0.0538    recall@20: 0.0846    ndcg@10: 0.0287    ndcg@20: 0.0366    
+Wed 04 Mar 2026 18:03:59 INFO test result: 
+recall@10: 0.0547    recall@20: 0.0829    ndcg@10: 0.0292    ndcg@20: 0.0365    
+Wed 04 Mar 2026 18:03:59 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:04:00 INFO epoch 44 training [time: 1.07s, train loss: 6.7074]
+Wed 04 Mar 2026 18:04:04 INFO epoch 44 evaluating [time: 2.07s, valid_score: 0.084100]
+Wed 04 Mar 2026 18:04:04 INFO valid result: 
+recall@10: 0.0545    recall@20: 0.0841    ndcg@10: 0.0290    ndcg@20: 0.0365    
+Wed 04 Mar 2026 18:04:04 INFO test result: 
+recall@10: 0.0545    recall@20: 0.0840    ndcg@10: 0.0292    ndcg@20: 0.0368    
+Wed 04 Mar 2026 18:04:05 INFO epoch 45 training [time: 1.03s, train loss: 6.6588]
+Wed 04 Mar 2026 18:04:08 INFO epoch 45 evaluating [time: 1.87s, valid_score: 0.084600]
+Wed 04 Mar 2026 18:04:08 INFO valid result: 
+recall@10: 0.0546    recall@20: 0.0846    ndcg@10: 0.0292    ndcg@20: 0.0368    
+Wed 04 Mar 2026 18:04:08 INFO test result: 
+recall@10: 0.0543    recall@20: 0.0843    ndcg@10: 0.0292    ndcg@20: 0.0368    
+Wed 04 Mar 2026 18:04:09 INFO epoch 46 training [time: 1.04s, train loss: 6.6460]
+Wed 04 Mar 2026 18:04:13 INFO epoch 46 evaluating [time: 1.74s, valid_score: 0.085400]
+Wed 04 Mar 2026 18:04:13 INFO valid result: 
+recall@10: 0.0550    recall@20: 0.0854    ndcg@10: 0.0294    ndcg@20: 0.0371    
+Wed 04 Mar 2026 18:04:13 INFO test result: 
+recall@10: 0.0547    recall@20: 0.0845    ndcg@10: 0.0294    ndcg@20: 0.0370    
+Wed 04 Mar 2026 18:04:13 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:04:14 INFO epoch 47 training [time: 1.03s, train loss: 6.5936]
+Wed 04 Mar 2026 18:04:17 INFO epoch 47 evaluating [time: 1.81s, valid_score: 0.085600]
+Wed 04 Mar 2026 18:04:17 INFO valid result: 
+recall@10: 0.0551    recall@20: 0.0856    ndcg@10: 0.0293    ndcg@20: 0.0370    
+Wed 04 Mar 2026 18:04:17 INFO test result: 
+recall@10: 0.0542    recall@20: 0.0842    ndcg@10: 0.0291    ndcg@20: 0.0368    
+Wed 04 Mar 2026 18:04:17 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:04:18 INFO epoch 48 training [time: 1.03s, train loss: 6.6031]
+Wed 04 Mar 2026 18:04:23 INFO epoch 48 evaluating [time: 2.32s, valid_score: 0.085700]
+Wed 04 Mar 2026 18:04:23 INFO valid result: 
+recall@10: 0.0550    recall@20: 0.0857    ndcg@10: 0.0294    ndcg@20: 0.0372    
+Wed 04 Mar 2026 18:04:23 INFO test result: 
+recall@10: 0.0551    recall@20: 0.0851    ndcg@10: 0.0294    ndcg@20: 0.0371    
+Wed 04 Mar 2026 18:04:23 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:04:24 INFO epoch 49 training [time: 1.06s, train loss: 6.5483]
+Wed 04 Mar 2026 18:04:29 INFO epoch 49 evaluating [time: 2.40s, valid_score: 0.085500]
+Wed 04 Mar 2026 18:04:29 INFO valid result: 
+recall@10: 0.0552    recall@20: 0.0855    ndcg@10: 0.0296    ndcg@20: 0.0373    
+Wed 04 Mar 2026 18:04:29 INFO test result: 
+recall@10: 0.0550    recall@20: 0.0846    ndcg@10: 0.0295    ndcg@20: 0.0371    
+Wed 04 Mar 2026 18:04:30 INFO epoch 50 training [time: 1.07s, train loss: 6.4773]
+Wed 04 Mar 2026 18:04:35 INFO epoch 50 evaluating [time: 2.46s, valid_score: 0.085100]
+Wed 04 Mar 2026 18:04:35 INFO valid result: 
+recall@10: 0.0545    recall@20: 0.0851    ndcg@10: 0.0295    ndcg@20: 0.0373    
+Wed 04 Mar 2026 18:04:35 INFO test result: 
+recall@10: 0.0558    recall@20: 0.0845    ndcg@10: 0.0296    ndcg@20: 0.0370    
+Wed 04 Mar 2026 18:04:36 INFO epoch 51 training [time: 1.08s, train loss: 6.5093]
+Wed 04 Mar 2026 18:04:41 INFO epoch 51 evaluating [time: 2.52s, valid_score: 0.085600]
+Wed 04 Mar 2026 18:04:41 INFO valid result: 
+recall@10: 0.0548    recall@20: 0.0856    ndcg@10: 0.0293    ndcg@20: 0.0372    
+Wed 04 Mar 2026 18:04:41 INFO test result: 
+recall@10: 0.0560    recall@20: 0.0850    ndcg@10: 0.0298    ndcg@20: 0.0373    
+Wed 04 Mar 2026 18:04:42 INFO epoch 52 training [time: 1.06s, train loss: 6.4887]
+Wed 04 Mar 2026 18:04:48 INFO epoch 52 evaluating [time: 2.34s, valid_score: 0.086100]
+Wed 04 Mar 2026 18:04:48 INFO valid result: 
+recall@10: 0.0553    recall@20: 0.0861    ndcg@10: 0.0294    ndcg@20: 0.0372    
+Wed 04 Mar 2026 18:04:48 INFO test result: 
+recall@10: 0.0549    recall@20: 0.0842    ndcg@10: 0.0294    ndcg@20: 0.0369    
+Wed 04 Mar 2026 18:04:48 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:04:49 INFO epoch 53 training [time: 1.15s, train loss: 6.4393]
+Wed 04 Mar 2026 18:04:53 INFO epoch 53 evaluating [time: 1.91s, valid_score: 0.084800]
+Wed 04 Mar 2026 18:04:53 INFO valid result: 
+recall@10: 0.0556    recall@20: 0.0848    ndcg@10: 0.0295    ndcg@20: 0.0369    
+Wed 04 Mar 2026 18:04:53 INFO test result: 
+recall@10: 0.0558    recall@20: 0.0853    ndcg@10: 0.0298    ndcg@20: 0.0373    
+Wed 04 Mar 2026 18:04:54 INFO epoch 54 training [time: 1.05s, train loss: 6.3641]
+Wed 04 Mar 2026 18:04:57 INFO epoch 54 evaluating [time: 1.66s, valid_score: 0.086100]
+Wed 04 Mar 2026 18:04:57 INFO valid result: 
+recall@10: 0.0551    recall@20: 0.0861    ndcg@10: 0.0294    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:04:57 INFO test result: 
+recall@10: 0.0560    recall@20: 0.0867    ndcg@10: 0.0299    ndcg@20: 0.0377    
+Wed 04 Mar 2026 18:04:58 INFO epoch 55 training [time: 1.04s, train loss: 6.3797]
+Wed 04 Mar 2026 18:05:02 INFO epoch 55 evaluating [time: 2.08s, valid_score: 0.085600]
+Wed 04 Mar 2026 18:05:02 INFO valid result: 
+recall@10: 0.0560    recall@20: 0.0856    ndcg@10: 0.0299    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:02 INFO test result: 
+recall@10: 0.0568    recall@20: 0.0856    ndcg@10: 0.0299    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:03 INFO epoch 56 training [time: 1.30s, train loss: 6.3326]
+Wed 04 Mar 2026 18:05:09 INFO epoch 56 evaluating [time: 3.30s, valid_score: 0.086700]
+Wed 04 Mar 2026 18:05:09 INFO valid result: 
+recall@10: 0.0556    recall@20: 0.0867    ndcg@10: 0.0297    ndcg@20: 0.0376    
+Wed 04 Mar 2026 18:05:09 INFO test result: 
+recall@10: 0.0568    recall@20: 0.0861    ndcg@10: 0.0300    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:05:09 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:05:10 INFO epoch 57 training [time: 1.12s, train loss: 6.3038]
+Wed 04 Mar 2026 18:05:15 INFO epoch 57 evaluating [time: 2.47s, valid_score: 0.085600]
+Wed 04 Mar 2026 18:05:15 INFO valid result: 
+recall@10: 0.0566    recall@20: 0.0856    ndcg@10: 0.0300    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:15 INFO test result: 
+recall@10: 0.0569    recall@20: 0.0850    ndcg@10: 0.0299    ndcg@20: 0.0371    
+Wed 04 Mar 2026 18:05:16 INFO epoch 58 training [time: 1.07s, train loss: 6.2754]
+Wed 04 Mar 2026 18:05:21 INFO epoch 58 evaluating [time: 2.28s, valid_score: 0.087200]
+Wed 04 Mar 2026 18:05:21 INFO valid result: 
+recall@10: 0.0569    recall@20: 0.0872    ndcg@10: 0.0301    ndcg@20: 0.0378    
+Wed 04 Mar 2026 18:05:21 INFO test result: 
+recall@10: 0.0573    recall@20: 0.0855    ndcg@10: 0.0302    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:21 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:05:22 INFO epoch 59 training [time: 0.94s, train loss: 6.2741]
+Wed 04 Mar 2026 18:05:27 INFO epoch 59 evaluating [time: 2.61s, valid_score: 0.086700]
+Wed 04 Mar 2026 18:05:27 INFO valid result: 
+recall@10: 0.0558    recall@20: 0.0867    ndcg@10: 0.0301    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:05:27 INFO test result: 
+recall@10: 0.0563    recall@20: 0.0855    ndcg@10: 0.0299    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:05:28 INFO epoch 60 training [time: 1.05s, train loss: 6.2854]
+Wed 04 Mar 2026 18:05:32 INFO epoch 60 evaluating [time: 1.90s, valid_score: 0.085800]
+Wed 04 Mar 2026 18:05:32 INFO valid result: 
+recall@10: 0.0553    recall@20: 0.0858    ndcg@10: 0.0299    ndcg@20: 0.0377    
+Wed 04 Mar 2026 18:05:32 INFO test result: 
+recall@10: 0.0566    recall@20: 0.0852    ndcg@10: 0.0300    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:33 INFO epoch 61 training [time: 1.23s, train loss: 6.1672]
+Wed 04 Mar 2026 18:05:37 INFO epoch 61 evaluating [time: 1.90s, valid_score: 0.086300]
+Wed 04 Mar 2026 18:05:37 INFO valid result: 
+recall@10: 0.0563    recall@20: 0.0863    ndcg@10: 0.0301    ndcg@20: 0.0377    
+Wed 04 Mar 2026 18:05:37 INFO test result: 
+recall@10: 0.0568    recall@20: 0.0860    ndcg@10: 0.0300    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:05:38 INFO epoch 62 training [time: 1.14s, train loss: 6.1619]
+Wed 04 Mar 2026 18:05:42 INFO epoch 62 evaluating [time: 1.93s, valid_score: 0.086300]
+Wed 04 Mar 2026 18:05:42 INFO valid result: 
+recall@10: 0.0566    recall@20: 0.0863    ndcg@10: 0.0303    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:05:42 INFO test result: 
+recall@10: 0.0564    recall@20: 0.0865    ndcg@10: 0.0298    ndcg@20: 0.0376    
+Wed 04 Mar 2026 18:05:43 INFO epoch 63 training [time: 1.08s, train loss: 6.2189]
+Wed 04 Mar 2026 18:05:47 INFO epoch 63 evaluating [time: 1.85s, valid_score: 0.086000]
+Wed 04 Mar 2026 18:05:47 INFO valid result: 
+recall@10: 0.0563    recall@20: 0.0860    ndcg@10: 0.0303    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:05:47 INFO test result: 
+recall@10: 0.0566    recall@20: 0.0861    ndcg@10: 0.0299    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:05:48 INFO epoch 64 training [time: 0.99s, train loss: 6.1670]
+Wed 04 Mar 2026 18:05:52 INFO epoch 64 evaluating [time: 1.90s, valid_score: 0.086500]
+Wed 04 Mar 2026 18:05:52 INFO valid result: 
+recall@10: 0.0570    recall@20: 0.0865    ndcg@10: 0.0304    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:05:52 INFO test result: 
+recall@10: 0.0568    recall@20: 0.0860    ndcg@10: 0.0299    ndcg@20: 0.0374    
+Wed 04 Mar 2026 18:05:53 INFO epoch 65 training [time: 1.07s, train loss: 6.1408]
+Wed 04 Mar 2026 18:05:56 INFO epoch 65 evaluating [time: 1.78s, valid_score: 0.086700]
+Wed 04 Mar 2026 18:05:56 INFO valid result: 
+recall@10: 0.0567    recall@20: 0.0867    ndcg@10: 0.0302    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:05:56 INFO test result: 
+recall@10: 0.0565    recall@20: 0.0863    ndcg@10: 0.0298    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:05:57 INFO epoch 66 training [time: 1.09s, train loss: 6.1189]
+Wed 04 Mar 2026 18:06:01 INFO epoch 66 evaluating [time: 1.95s, valid_score: 0.087300]
+Wed 04 Mar 2026 18:06:01 INFO valid result: 
+recall@10: 0.0570    recall@20: 0.0873    ndcg@10: 0.0304    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:01 INFO test result: 
+recall@10: 0.0570    recall@20: 0.0864    ndcg@10: 0.0300    ndcg@20: 0.0375    
+Wed 04 Mar 2026 18:06:01 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:06:02 INFO epoch 67 training [time: 1.05s, train loss: 6.1214]
+Wed 04 Mar 2026 18:06:06 INFO epoch 67 evaluating [time: 1.96s, valid_score: 0.087300]
+Wed 04 Mar 2026 18:06:06 INFO valid result: 
+recall@10: 0.0567    recall@20: 0.0873    ndcg@10: 0.0303    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:06 INFO test result: 
+recall@10: 0.0571    recall@20: 0.0862    ndcg@10: 0.0302    ndcg@20: 0.0377    
+Wed 04 Mar 2026 18:06:07 INFO epoch 68 training [time: 1.03s, train loss: 6.1077]
+Wed 04 Mar 2026 18:06:10 INFO epoch 68 evaluating [time: 1.91s, valid_score: 0.086300]
+Wed 04 Mar 2026 18:06:10 INFO valid result: 
+recall@10: 0.0575    recall@20: 0.0863    ndcg@10: 0.0307    ndcg@20: 0.0380    
+Wed 04 Mar 2026 18:06:10 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0864    ndcg@10: 0.0304    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:06:12 INFO epoch 69 training [time: 1.06s, train loss: 6.1138]
+Wed 04 Mar 2026 18:06:16 INFO epoch 69 evaluating [time: 2.07s, valid_score: 0.086900]
+Wed 04 Mar 2026 18:06:16 INFO valid result: 
+recall@10: 0.0572    recall@20: 0.0869    ndcg@10: 0.0306    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:06:16 INFO test result: 
+recall@10: 0.0572    recall@20: 0.0863    ndcg@10: 0.0303    ndcg@20: 0.0378    
+Wed 04 Mar 2026 18:06:17 INFO epoch 70 training [time: 1.12s, train loss: 6.0588]
+Wed 04 Mar 2026 18:06:21 INFO epoch 70 evaluating [time: 1.94s, valid_score: 0.086600]
+Wed 04 Mar 2026 18:06:21 INFO valid result: 
+recall@10: 0.0567    recall@20: 0.0866    ndcg@10: 0.0304    ndcg@20: 0.0380    
+Wed 04 Mar 2026 18:06:21 INFO test result: 
+recall@10: 0.0572    recall@20: 0.0878    ndcg@10: 0.0303    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:22 INFO epoch 71 training [time: 1.09s, train loss: 6.0318]
+Wed 04 Mar 2026 18:06:26 INFO epoch 71 evaluating [time: 2.31s, valid_score: 0.087400]
+Wed 04 Mar 2026 18:06:26 INFO valid result: 
+recall@10: 0.0572    recall@20: 0.0874    ndcg@10: 0.0305    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:26 INFO test result: 
+recall@10: 0.0569    recall@20: 0.0869    ndcg@10: 0.0303    ndcg@20: 0.0380    
+Wed 04 Mar 2026 18:06:26 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:06:27 INFO epoch 72 training [time: 1.09s, train loss: 6.0219]
+Wed 04 Mar 2026 18:06:32 INFO epoch 72 evaluating [time: 2.52s, valid_score: 0.087000]
+Wed 04 Mar 2026 18:06:32 INFO valid result: 
+recall@10: 0.0564    recall@20: 0.0870    ndcg@10: 0.0303    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:32 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0862    ndcg@10: 0.0304    ndcg@20: 0.0378    
+Wed 04 Mar 2026 18:06:33 INFO epoch 73 training [time: 1.10s, train loss: 6.0643]
+Wed 04 Mar 2026 18:06:38 INFO epoch 73 evaluating [time: 2.10s, valid_score: 0.087200]
+Wed 04 Mar 2026 18:06:38 INFO valid result: 
+recall@10: 0.0567    recall@20: 0.0872    ndcg@10: 0.0304    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:06:38 INFO test result: 
+recall@10: 0.0577    recall@20: 0.0866    ndcg@10: 0.0305    ndcg@20: 0.0379    
+Wed 04 Mar 2026 18:06:39 INFO epoch 74 training [time: 1.07s, train loss: 6.0219]
+Wed 04 Mar 2026 18:06:42 INFO epoch 74 evaluating [time: 1.82s, valid_score: 0.086800]
+Wed 04 Mar 2026 18:06:42 INFO valid result: 
+recall@10: 0.0570    recall@20: 0.0868    ndcg@10: 0.0307    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:06:42 INFO test result: 
+recall@10: 0.0570    recall@20: 0.0877    ndcg@10: 0.0303    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:44 INFO epoch 75 training [time: 1.03s, train loss: 5.9531]
+Wed 04 Mar 2026 18:06:47 INFO epoch 75 evaluating [time: 1.72s, valid_score: 0.088500]
+Wed 04 Mar 2026 18:06:47 INFO valid result: 
+recall@10: 0.0570    recall@20: 0.0885    ndcg@10: 0.0305    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:06:47 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0871    ndcg@10: 0.0304    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:47 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:06:48 INFO epoch 76 training [time: 1.02s, train loss: 6.0289]
+Wed 04 Mar 2026 18:06:52 INFO epoch 76 evaluating [time: 1.66s, valid_score: 0.087800]
+Wed 04 Mar 2026 18:06:52 INFO valid result: 
+recall@10: 0.0569    recall@20: 0.0878    ndcg@10: 0.0305    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:06:52 INFO test result: 
+recall@10: 0.0577    recall@20: 0.0864    ndcg@10: 0.0307    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:06:53 INFO epoch 77 training [time: 1.06s, train loss: 6.0111]
+Wed 04 Mar 2026 18:06:57 INFO epoch 77 evaluating [time: 1.88s, valid_score: 0.087800]
+Wed 04 Mar 2026 18:06:57 INFO valid result: 
+recall@10: 0.0567    recall@20: 0.0878    ndcg@10: 0.0304    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:06:57 INFO test result: 
+recall@10: 0.0570    recall@20: 0.0866    ndcg@10: 0.0303    ndcg@20: 0.0380    
+Wed 04 Mar 2026 18:06:58 INFO epoch 78 training [time: 0.92s, train loss: 5.9772]
+Wed 04 Mar 2026 18:07:01 INFO epoch 78 evaluating [time: 1.68s, valid_score: 0.087800]
+Wed 04 Mar 2026 18:07:01 INFO valid result: 
+recall@10: 0.0576    recall@20: 0.0878    ndcg@10: 0.0307    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:01 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0871    ndcg@10: 0.0304    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:07:02 INFO epoch 79 training [time: 0.96s, train loss: 6.0048]
+Wed 04 Mar 2026 18:07:05 INFO epoch 79 evaluating [time: 1.62s, valid_score: 0.088000]
+Wed 04 Mar 2026 18:07:05 INFO valid result: 
+recall@10: 0.0572    recall@20: 0.0880    ndcg@10: 0.0305    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:05 INFO test result: 
+recall@10: 0.0570    recall@20: 0.0869    ndcg@10: 0.0304    ndcg@20: 0.0380    
+Wed 04 Mar 2026 18:07:06 INFO epoch 80 training [time: 0.78s, train loss: 5.8837]
+Wed 04 Mar 2026 18:07:09 INFO epoch 80 evaluating [time: 1.68s, valid_score: 0.088000]
+Wed 04 Mar 2026 18:07:09 INFO valid result: 
+recall@10: 0.0578    recall@20: 0.0880    ndcg@10: 0.0307    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:09 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0874    ndcg@10: 0.0305    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:07:10 INFO epoch 81 training [time: 1.04s, train loss: 5.9115]
+Wed 04 Mar 2026 18:07:14 INFO epoch 81 evaluating [time: 1.72s, valid_score: 0.087300]
+Wed 04 Mar 2026 18:07:14 INFO valid result: 
+recall@10: 0.0578    recall@20: 0.0873    ndcg@10: 0.0308    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:07:14 INFO test result: 
+recall@10: 0.0572    recall@20: 0.0870    ndcg@10: 0.0304    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:07:15 INFO epoch 82 training [time: 1.04s, train loss: 5.9238]
+Wed 04 Mar 2026 18:07:19 INFO epoch 82 evaluating [time: 1.90s, valid_score: 0.086700]
+Wed 04 Mar 2026 18:07:19 INFO valid result: 
+recall@10: 0.0578    recall@20: 0.0867    ndcg@10: 0.0308    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:07:19 INFO test result: 
+recall@10: 0.0571    recall@20: 0.0871    ndcg@10: 0.0306    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:07:20 INFO epoch 83 training [time: 1.08s, train loss: 5.9016]
+Wed 04 Mar 2026 18:07:26 INFO epoch 83 evaluating [time: 2.25s, valid_score: 0.087700]
+Wed 04 Mar 2026 18:07:26 INFO valid result: 
+recall@10: 0.0585    recall@20: 0.0877    ndcg@10: 0.0311    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:07:26 INFO test result: 
+recall@10: 0.0573    recall@20: 0.0867    ndcg@10: 0.0307    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:07:27 INFO epoch 84 training [time: 1.11s, train loss: 5.8843]
+Wed 04 Mar 2026 18:07:31 INFO epoch 84 evaluating [time: 1.74s, valid_score: 0.088100]
+Wed 04 Mar 2026 18:07:31 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0881    ndcg@10: 0.0310    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:07:31 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0867    ndcg@10: 0.0311    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:32 INFO epoch 85 training [time: 1.03s, train loss: 5.8354]
+Wed 04 Mar 2026 18:07:35 INFO epoch 85 evaluating [time: 1.71s, valid_score: 0.087900]
+Wed 04 Mar 2026 18:07:35 INFO valid result: 
+recall@10: 0.0580    recall@20: 0.0879    ndcg@10: 0.0309    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:07:35 INFO test result: 
+recall@10: 0.0579    recall@20: 0.0868    ndcg@10: 0.0309    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:36 INFO epoch 86 training [time: 1.03s, train loss: 5.8762]
+Wed 04 Mar 2026 18:07:40 INFO epoch 86 evaluating [time: 1.92s, valid_score: 0.088500]
+Wed 04 Mar 2026 18:07:40 INFO valid result: 
+recall@10: 0.0585    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:07:40 INFO test result: 
+recall@10: 0.0581    recall@20: 0.0866    ndcg@10: 0.0309    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:07:41 INFO epoch 87 training [time: 1.03s, train loss: 5.8543]
+Wed 04 Mar 2026 18:07:45 INFO epoch 87 evaluating [time: 1.87s, valid_score: 0.087900]
+Wed 04 Mar 2026 18:07:45 INFO valid result: 
+recall@10: 0.0580    recall@20: 0.0879    ndcg@10: 0.0309    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:07:45 INFO test result: 
+recall@10: 0.0577    recall@20: 0.0865    ndcg@10: 0.0309    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:07:46 INFO epoch 88 training [time: 1.05s, train loss: 5.8424]
+Wed 04 Mar 2026 18:07:49 INFO epoch 88 evaluating [time: 1.83s, valid_score: 0.088000]
+Wed 04 Mar 2026 18:07:49 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0880    ndcg@10: 0.0310    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:07:49 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0863    ndcg@10: 0.0310    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:07:50 INFO epoch 89 training [time: 1.08s, train loss: 5.8446]
+Wed 04 Mar 2026 18:07:54 INFO epoch 89 evaluating [time: 1.78s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:07:54 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0887    ndcg@10: 0.0309    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:07:54 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0869    ndcg@10: 0.0310    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:54 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:07:55 INFO epoch 90 training [time: 1.05s, train loss: 5.8729]
+Wed 04 Mar 2026 18:07:58 INFO epoch 90 evaluating [time: 1.69s, valid_score: 0.089000]
+Wed 04 Mar 2026 18:07:58 INFO valid result: 
+recall@10: 0.0577    recall@20: 0.0890    ndcg@10: 0.0308    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:07:58 INFO test result: 
+recall@10: 0.0577    recall@20: 0.0867    ndcg@10: 0.0310    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:07:58 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:07:59 INFO epoch 91 training [time: 1.06s, train loss: 5.8184]
+Wed 04 Mar 2026 18:08:03 INFO epoch 91 evaluating [time: 2.04s, valid_score: 0.089100]
+Wed 04 Mar 2026 18:08:03 INFO valid result: 
+recall@10: 0.0577    recall@20: 0.0891    ndcg@10: 0.0309    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:08:03 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0870    ndcg@10: 0.0311    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:08:03 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:08:04 INFO epoch 92 training [time: 0.95s, train loss: 5.7746]
+Wed 04 Mar 2026 18:08:08 INFO epoch 92 evaluating [time: 1.92s, valid_score: 0.088600]
+Wed 04 Mar 2026 18:08:08 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0886    ndcg@10: 0.0312    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:08:08 INFO test result: 
+recall@10: 0.0580    recall@20: 0.0866    ndcg@10: 0.0310    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:08:09 INFO epoch 93 training [time: 1.05s, train loss: 5.8289]
+Wed 04 Mar 2026 18:08:12 INFO epoch 93 evaluating [time: 1.81s, valid_score: 0.088900]
+Wed 04 Mar 2026 18:08:12 INFO valid result: 
+recall@10: 0.0584    recall@20: 0.0889    ndcg@10: 0.0311    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:08:12 INFO test result: 
+recall@10: 0.0586    recall@20: 0.0870    ndcg@10: 0.0312    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:08:13 INFO epoch 94 training [time: 1.05s, train loss: 5.8203]
+Wed 04 Mar 2026 18:08:17 INFO epoch 94 evaluating [time: 2.08s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:08:17 INFO valid result: 
+recall@10: 0.0581    recall@20: 0.0887    ndcg@10: 0.0310    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:08:17 INFO test result: 
+recall@10: 0.0578    recall@20: 0.0870    ndcg@10: 0.0310    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:08:18 INFO epoch 95 training [time: 1.04s, train loss: 5.7992]
+Wed 04 Mar 2026 18:08:22 INFO epoch 95 evaluating [time: 1.83s, valid_score: 0.088200]
+Wed 04 Mar 2026 18:08:22 INFO valid result: 
+recall@10: 0.0580    recall@20: 0.0882    ndcg@10: 0.0310    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:08:22 INFO test result: 
+recall@10: 0.0573    recall@20: 0.0869    ndcg@10: 0.0307    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:08:23 INFO epoch 96 training [time: 1.09s, train loss: 5.7619]
+Wed 04 Mar 2026 18:08:26 INFO epoch 96 evaluating [time: 1.91s, valid_score: 0.088200]
+Wed 04 Mar 2026 18:08:26 INFO valid result: 
+recall@10: 0.0585    recall@20: 0.0882    ndcg@10: 0.0311    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:08:26 INFO test result: 
+recall@10: 0.0579    recall@20: 0.0876    ndcg@10: 0.0309    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:08:27 INFO epoch 97 training [time: 1.05s, train loss: 5.7725]
+Wed 04 Mar 2026 18:08:31 INFO epoch 97 evaluating [time: 1.82s, valid_score: 0.088500]
+Wed 04 Mar 2026 18:08:31 INFO valid result: 
+recall@10: 0.0581    recall@20: 0.0885    ndcg@10: 0.0309    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:08:31 INFO test result: 
+recall@10: 0.0576    recall@20: 0.0869    ndcg@10: 0.0308    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:08:32 INFO epoch 98 training [time: 1.04s, train loss: 5.7492]
+Wed 04 Mar 2026 18:08:36 INFO epoch 98 evaluating [time: 2.11s, valid_score: 0.088400]
+Wed 04 Mar 2026 18:08:36 INFO valid result: 
+recall@10: 0.0575    recall@20: 0.0884    ndcg@10: 0.0308    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:08:36 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0860    ndcg@10: 0.0307    ndcg@20: 0.0381    
+Wed 04 Mar 2026 18:08:37 INFO epoch 99 training [time: 1.05s, train loss: 5.7211]
+Wed 04 Mar 2026 18:08:41 INFO epoch 99 evaluating [time: 1.91s, valid_score: 0.089000]
+Wed 04 Mar 2026 18:08:41 INFO valid result: 
+recall@10: 0.0577    recall@20: 0.0890    ndcg@10: 0.0311    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:08:41 INFO test result: 
+recall@10: 0.0570    recall@20: 0.0867    ndcg@10: 0.0306    ndcg@20: 0.0382    
+Wed 04 Mar 2026 18:08:42 INFO epoch 100 training [time: 1.13s, train loss: 5.7078]
+Wed 04 Mar 2026 18:08:46 INFO epoch 100 evaluating [time: 2.06s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:08:46 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0887    ndcg@10: 0.0311    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:08:46 INFO test result: 
+recall@10: 0.0575    recall@20: 0.0867    ndcg@10: 0.0308    ndcg@20: 0.0383    
+Wed 04 Mar 2026 18:08:47 INFO epoch 101 training [time: 1.09s, train loss: 5.7871]
+Wed 04 Mar 2026 18:08:52 INFO epoch 101 evaluating [time: 2.50s, valid_score: 0.088300]
+Wed 04 Mar 2026 18:08:52 INFO valid result: 
+recall@10: 0.0577    recall@20: 0.0883    ndcg@10: 0.0309    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:08:52 INFO test result: 
+recall@10: 0.0576    recall@20: 0.0872    ndcg@10: 0.0309    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:08:53 INFO epoch 102 training [time: 1.08s, train loss: 5.7567]
+Wed 04 Mar 2026 18:08:57 INFO epoch 102 evaluating [time: 1.61s, valid_score: 0.088400]
+Wed 04 Mar 2026 18:08:57 INFO valid result: 
+recall@10: 0.0576    recall@20: 0.0884    ndcg@10: 0.0309    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:08:57 INFO test result: 
+recall@10: 0.0572    recall@20: 0.0865    ndcg@10: 0.0309    ndcg@20: 0.0384    
+Wed 04 Mar 2026 18:08:58 INFO epoch 103 training [time: 1.06s, train loss: 5.7782]
+Wed 04 Mar 2026 18:09:01 INFO epoch 103 evaluating [time: 1.87s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:09:01 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0887    ndcg@10: 0.0315    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:09:01 INFO test result: 
+recall@10: 0.0573    recall@20: 0.0873    ndcg@10: 0.0309    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:09:02 INFO epoch 104 training [time: 1.06s, train loss: 5.7186]
+Wed 04 Mar 2026 18:09:06 INFO epoch 104 evaluating [time: 1.84s, valid_score: 0.089500]
+Wed 04 Mar 2026 18:09:06 INFO valid result: 
+recall@10: 0.0584    recall@20: 0.0895    ndcg@10: 0.0312    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:09:06 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0872    ndcg@10: 0.0308    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:09:06 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:09:07 INFO epoch 105 training [time: 1.03s, train loss: 5.7626]
+Wed 04 Mar 2026 18:09:11 INFO epoch 105 evaluating [time: 1.93s, valid_score: 0.088300]
+Wed 04 Mar 2026 18:09:11 INFO valid result: 
+recall@10: 0.0578    recall@20: 0.0883    ndcg@10: 0.0307    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:09:11 INFO test result: 
+recall@10: 0.0571    recall@20: 0.0871    ndcg@10: 0.0309    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:09:12 INFO epoch 106 training [time: 1.05s, train loss: 5.7291]
+Wed 04 Mar 2026 18:09:15 INFO epoch 106 evaluating [time: 1.87s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:09:15 INFO valid result: 
+recall@10: 0.0581    recall@20: 0.0887    ndcg@10: 0.0309    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:09:15 INFO test result: 
+recall@10: 0.0578    recall@20: 0.0867    ndcg@10: 0.0312    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:09:16 INFO epoch 107 training [time: 1.05s, train loss: 5.7086]
+Wed 04 Mar 2026 18:09:20 INFO epoch 107 evaluating [time: 1.96s, valid_score: 0.088800]
+Wed 04 Mar 2026 18:09:20 INFO valid result: 
+recall@10: 0.0583    recall@20: 0.0888    ndcg@10: 0.0311    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:09:20 INFO test result: 
+recall@10: 0.0574    recall@20: 0.0870    ndcg@10: 0.0311    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:09:21 INFO epoch 108 training [time: 1.02s, train loss: 5.7159]
+Wed 04 Mar 2026 18:09:25 INFO epoch 108 evaluating [time: 1.79s, valid_score: 0.089300]
+Wed 04 Mar 2026 18:09:25 INFO valid result: 
+recall@10: 0.0584    recall@20: 0.0893    ndcg@10: 0.0310    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:09:25 INFO test result: 
+recall@10: 0.0583    recall@20: 0.0869    ndcg@10: 0.0316    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:09:26 INFO epoch 109 training [time: 1.05s, train loss: 5.6726]
+Wed 04 Mar 2026 18:09:29 INFO epoch 109 evaluating [time: 1.67s, valid_score: 0.088800]
+Wed 04 Mar 2026 18:09:29 INFO valid result: 
+recall@10: 0.0583    recall@20: 0.0888    ndcg@10: 0.0310    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:09:29 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0878    ndcg@10: 0.0315    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:09:30 INFO epoch 110 training [time: 1.04s, train loss: 5.6549]
+Wed 04 Mar 2026 18:09:33 INFO epoch 110 evaluating [time: 1.75s, valid_score: 0.089200]
+Wed 04 Mar 2026 18:09:33 INFO valid result: 
+recall@10: 0.0584    recall@20: 0.0892    ndcg@10: 0.0313    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:09:33 INFO test result: 
+recall@10: 0.0576    recall@20: 0.0878    ndcg@10: 0.0312    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:09:34 INFO epoch 111 training [time: 1.03s, train loss: 5.6317]
+Wed 04 Mar 2026 18:09:38 INFO epoch 111 evaluating [time: 1.63s, valid_score: 0.088500]
+Wed 04 Mar 2026 18:09:38 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0310    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:09:38 INFO test result: 
+recall@10: 0.0577    recall@20: 0.0874    ndcg@10: 0.0310    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:09:39 INFO epoch 112 training [time: 1.06s, train loss: 5.6526]
+Wed 04 Mar 2026 18:09:43 INFO epoch 112 evaluating [time: 1.79s, valid_score: 0.089100]
+Wed 04 Mar 2026 18:09:43 INFO valid result: 
+recall@10: 0.0575    recall@20: 0.0891    ndcg@10: 0.0310    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:09:43 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0878    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:09:44 INFO epoch 113 training [time: 1.03s, train loss: 5.7143]
+Wed 04 Mar 2026 18:09:47 INFO epoch 113 evaluating [time: 1.82s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:09:47 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0887    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:09:47 INFO test result: 
+recall@10: 0.0581    recall@20: 0.0876    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:09:48 INFO epoch 114 training [time: 1.03s, train loss: 5.6444]
+Wed 04 Mar 2026 18:09:52 INFO epoch 114 evaluating [time: 1.93s, valid_score: 0.088600]
+Wed 04 Mar 2026 18:09:52 INFO valid result: 
+recall@10: 0.0589    recall@20: 0.0886    ndcg@10: 0.0312    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:09:52 INFO test result: 
+recall@10: 0.0583    recall@20: 0.0875    ndcg@10: 0.0312    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:09:53 INFO epoch 115 training [time: 1.07s, train loss: 5.6349]
+Wed 04 Mar 2026 18:09:57 INFO epoch 115 evaluating [time: 1.86s, valid_score: 0.088600]
+Wed 04 Mar 2026 18:09:57 INFO valid result: 
+recall@10: 0.0588    recall@20: 0.0886    ndcg@10: 0.0314    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:09:57 INFO test result: 
+recall@10: 0.0581    recall@20: 0.0875    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:09:58 INFO epoch 116 training [time: 1.05s, train loss: 5.6757]
+Wed 04 Mar 2026 18:10:03 INFO epoch 116 evaluating [time: 2.67s, valid_score: 0.089300]
+Wed 04 Mar 2026 18:10:03 INFO valid result: 
+recall@10: 0.0582    recall@20: 0.0893    ndcg@10: 0.0311    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:03 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0877    ndcg@10: 0.0312    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:10:04 INFO epoch 117 training [time: 1.06s, train loss: 5.6141]
+Wed 04 Mar 2026 18:10:08 INFO epoch 117 evaluating [time: 1.70s, valid_score: 0.090100]
+Wed 04 Mar 2026 18:10:08 INFO valid result: 
+recall@10: 0.0588    recall@20: 0.0901    ndcg@10: 0.0312    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:10:08 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:10:08 INFO ██ TAMER--Best validation results updated!!!
+Wed 04 Mar 2026 18:10:09 INFO epoch 118 training [time: 1.04s, train loss: 5.6186]
+Wed 04 Mar 2026 18:10:13 INFO epoch 118 evaluating [time: 1.80s, valid_score: 0.090000]
+Wed 04 Mar 2026 18:10:13 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0900    ndcg@10: 0.0313    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:10:13 INFO test result: 
+recall@10: 0.0589    recall@20: 0.0884    ndcg@10: 0.0314    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:14 INFO epoch 119 training [time: 1.05s, train loss: 5.6009]
+Wed 04 Mar 2026 18:10:17 INFO epoch 119 evaluating [time: 2.00s, valid_score: 0.089700]
+Wed 04 Mar 2026 18:10:17 INFO valid result: 
+recall@10: 0.0586    recall@20: 0.0897    ndcg@10: 0.0312    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:10:17 INFO test result: 
+recall@10: 0.0583    recall@20: 0.0884    ndcg@10: 0.0313    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:18 INFO epoch 120 training [time: 1.06s, train loss: 5.6550]
+Wed 04 Mar 2026 18:10:22 INFO epoch 120 evaluating [time: 1.73s, valid_score: 0.089400]
+Wed 04 Mar 2026 18:10:22 INFO valid result: 
+recall@10: 0.0586    recall@20: 0.0894    ndcg@10: 0.0311    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:22 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0878    ndcg@10: 0.0312    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:10:23 INFO epoch 121 training [time: 1.07s, train loss: 5.6425]
+Wed 04 Mar 2026 18:10:27 INFO epoch 121 evaluating [time: 1.84s, valid_score: 0.089900]
+Wed 04 Mar 2026 18:10:27 INFO valid result: 
+recall@10: 0.0592    recall@20: 0.0899    ndcg@10: 0.0314    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:10:27 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0882    ndcg@10: 0.0312    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:10:28 INFO epoch 122 training [time: 1.07s, train loss: 5.6066]
+Wed 04 Mar 2026 18:10:31 INFO epoch 122 evaluating [time: 1.62s, valid_score: 0.089900]
+Wed 04 Mar 2026 18:10:31 INFO valid result: 
+recall@10: 0.0589    recall@20: 0.0899    ndcg@10: 0.0311    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:31 INFO test result: 
+recall@10: 0.0579    recall@20: 0.0885    ndcg@10: 0.0310    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:10:32 INFO epoch 123 training [time: 1.01s, train loss: 5.6323]
+Wed 04 Mar 2026 18:10:36 INFO epoch 123 evaluating [time: 2.16s, valid_score: 0.090000]
+Wed 04 Mar 2026 18:10:36 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0900    ndcg@10: 0.0312    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:10:36 INFO test result: 
+recall@10: 0.0581    recall@20: 0.0879    ndcg@10: 0.0310    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:10:37 INFO epoch 124 training [time: 1.14s, train loss: 5.5949]
+Wed 04 Mar 2026 18:10:41 INFO epoch 124 evaluating [time: 2.07s, valid_score: 0.090000]
+Wed 04 Mar 2026 18:10:41 INFO valid result: 
+recall@10: 0.0588    recall@20: 0.0900    ndcg@10: 0.0313    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:10:41 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0874    ndcg@10: 0.0313    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:10:42 INFO epoch 125 training [time: 1.05s, train loss: 5.5870]
+Wed 04 Mar 2026 18:10:45 INFO epoch 125 evaluating [time: 1.67s, valid_score: 0.089400]
+Wed 04 Mar 2026 18:10:45 INFO valid result: 
+recall@10: 0.0592    recall@20: 0.0894    ndcg@10: 0.0313    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:45 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0877    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:10:46 INFO epoch 126 training [time: 1.06s, train loss: 5.6242]
+Wed 04 Mar 2026 18:10:50 INFO epoch 126 evaluating [time: 1.80s, valid_score: 0.089300]
+Wed 04 Mar 2026 18:10:50 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0893    ndcg@10: 0.0313    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:10:50 INFO test result: 
+recall@10: 0.0588    recall@20: 0.0874    ndcg@10: 0.0314    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:10:51 INFO epoch 127 training [time: 1.17s, train loss: 5.5972]
+Wed 04 Mar 2026 18:10:55 INFO epoch 127 evaluating [time: 1.93s, valid_score: 0.088900]
+Wed 04 Mar 2026 18:10:55 INFO valid result: 
+recall@10: 0.0591    recall@20: 0.0889    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:10:55 INFO test result: 
+recall@10: 0.0586    recall@20: 0.0872    ndcg@10: 0.0313    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:10:56 INFO epoch 128 training [time: 1.12s, train loss: 5.6376]
+Wed 04 Mar 2026 18:10:59 INFO epoch 128 evaluating [time: 1.68s, valid_score: 0.088100]
+Wed 04 Mar 2026 18:10:59 INFO valid result: 
+recall@10: 0.0586    recall@20: 0.0881    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:10:59 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0877    ndcg@10: 0.0311    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:11:00 INFO epoch 129 training [time: 0.99s, train loss: 5.5976]
+Wed 04 Mar 2026 18:11:04 INFO epoch 129 evaluating [time: 1.75s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:11:04 INFO valid result: 
+recall@10: 0.0586    recall@20: 0.0887    ndcg@10: 0.0310    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:11:04 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0880    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:11:05 INFO epoch 130 training [time: 1.22s, train loss: 5.6197]
+Wed 04 Mar 2026 18:11:09 INFO epoch 130 evaluating [time: 1.83s, valid_score: 0.089100]
+Wed 04 Mar 2026 18:11:09 INFO valid result: 
+recall@10: 0.0579    recall@20: 0.0891    ndcg@10: 0.0308    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:11:09 INFO test result: 
+recall@10: 0.0579    recall@20: 0.0876    ndcg@10: 0.0310    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:11:10 INFO epoch 131 training [time: 1.04s, train loss: 5.6041]
+Wed 04 Mar 2026 18:11:13 INFO epoch 131 evaluating [time: 1.84s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:11:13 INFO valid result: 
+recall@10: 0.0590    recall@20: 0.0887    ndcg@10: 0.0313    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:11:13 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0871    ndcg@10: 0.0312    ndcg@20: 0.0385    
+Wed 04 Mar 2026 18:11:14 INFO epoch 132 training [time: 1.02s, train loss: 5.5570]
+Wed 04 Mar 2026 18:11:18 INFO epoch 132 evaluating [time: 1.90s, valid_score: 0.088800]
+Wed 04 Mar 2026 18:11:18 INFO valid result: 
+recall@10: 0.0589    recall@20: 0.0888    ndcg@10: 0.0314    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:11:18 INFO test result: 
+recall@10: 0.0584    recall@20: 0.0880    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:11:19 INFO epoch 133 training [time: 1.05s, train loss: 5.6349]
+Wed 04 Mar 2026 18:11:23 INFO epoch 133 evaluating [time: 1.69s, valid_score: 0.089300]
+Wed 04 Mar 2026 18:11:23 INFO valid result: 
+recall@10: 0.0592    recall@20: 0.0893    ndcg@10: 0.0314    ndcg@20: 0.0390    
+Wed 04 Mar 2026 18:11:23 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0880    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:11:24 INFO epoch 134 training [time: 1.05s, train loss: 5.5482]
+Wed 04 Mar 2026 18:11:27 INFO epoch 134 evaluating [time: 1.77s, valid_score: 0.088800]
+Wed 04 Mar 2026 18:11:27 INFO valid result: 
+recall@10: 0.0594    recall@20: 0.0888    ndcg@10: 0.0315    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:11:27 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0875    ndcg@10: 0.0311    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:11:28 INFO epoch 135 training [time: 1.03s, train loss: 5.5951]
+Wed 04 Mar 2026 18:11:32 INFO epoch 135 evaluating [time: 1.90s, valid_score: 0.088700]
+Wed 04 Mar 2026 18:11:32 INFO valid result: 
+recall@10: 0.0595    recall@20: 0.0887    ndcg@10: 0.0316    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:11:32 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0881    ndcg@10: 0.0312    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:11:33 INFO epoch 136 training [time: 0.90s, train loss: 5.5859]
+Wed 04 Mar 2026 18:11:37 INFO epoch 136 evaluating [time: 1.87s, valid_score: 0.088800]
+Wed 04 Mar 2026 18:11:37 INFO valid result: 
+recall@10: 0.0596    recall@20: 0.0888    ndcg@10: 0.0316    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:11:37 INFO test result: 
+recall@10: 0.0582    recall@20: 0.0876    ndcg@10: 0.0311    ndcg@20: 0.0387    
+Wed 04 Mar 2026 18:11:38 INFO epoch 137 training [time: 1.11s, train loss: 5.5668]
+Wed 04 Mar 2026 18:11:42 INFO epoch 137 evaluating [time: 1.92s, valid_score: 0.089100]
+Wed 04 Mar 2026 18:11:42 INFO valid result: 
+recall@10: 0.0601    recall@20: 0.0891    ndcg@10: 0.0317    ndcg@20: 0.0391    
+Wed 04 Mar 2026 18:11:42 INFO test result: 
+recall@10: 0.0580    recall@20: 0.0879    ndcg@10: 0.0309    ndcg@20: 0.0386    
+Wed 04 Mar 2026 18:11:43 INFO epoch 138 training [time: 1.07s, train loss: 5.5524]
+Wed 04 Mar 2026 18:11:46 INFO epoch 138 evaluating [time: 1.59s, valid_score: 0.089500]
+Wed 04 Mar 2026 18:11:46 INFO valid result: 
+recall@10: 0.0604    recall@20: 0.0895    ndcg@10: 0.0320    ndcg@20: 0.0394    
+Wed 04 Mar 2026 18:11:46 INFO test result: 
+recall@10: 0.0585    recall@20: 0.0884    ndcg@10: 0.0311    ndcg@20: 0.0388    
+Wed 04 Mar 2026 18:11:46 INFO +++++Finished training, best eval result in epoch 117
+Wed 04 Mar 2026 18:11:46 INFO best valid result: recall@10: 0.0588    recall@20: 0.0901    ndcg@10: 0.0312    ndcg@20: 0.0392    
+Wed 04 Mar 2026 18:11:46 INFO test result: recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:11:46 INFO ████Current BEST████:
+Parameters: ['seed']=(999,),
+Valid: recall@10: 0.0588    recall@20: 0.0901    ndcg@10: 0.0312    ndcg@20: 0.0392    ,
+Test: recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0389    
+
+
+
+Wed 04 Mar 2026 18:11:46 INFO 
+============All Over=====================
+Wed 04 Mar 2026 18:11:46 INFO Parameters: ['seed']=(999,),
+ best valid: recall@10: 0.0588    recall@20: 0.0901    ndcg@10: 0.0312    ndcg@20: 0.0392    ,
+ best test: recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0389    
+Wed 04 Mar 2026 18:11:46 INFO 
+
+█████████████ BEST ████████████████
+Wed 04 Mar 2026 18:11:46 INFO 	Parameters: ['seed']=(999,),
+Valid: recall@10: 0.0588    recall@20: 0.0901    ndcg@10: 0.0312    ndcg@20: 0.0392    ,
+Test: recall@10: 0.0582    recall@20: 0.0885    ndcg@10: 0.0311    ndcg@20: 0.0389    
+
+
